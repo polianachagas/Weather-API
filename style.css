@@ -1,0 +1,71 @@
+.dongle-regular {
+    font-family: "Dongle", serif;
+    font-weight: 400;
+    font-style: normal;
+}  
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Dongle", serif;
+}
+
+body {
+    background-color: rgb(193, 243, 226);
+    height: 100vh; /**/
+    box-sizing: border-box; /**/
+    background-size: cover;
+}
+
+.weather-container {
+    padding: 20px;
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+}
+
+.icon {
+    width: 300px;
+    margin: 20px;
+}
+
+.weather-info {
+    background-color: #f7ece1b2;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+p {
+    font-size: 48px;
+    margin: 2px;
+
+    background-color: #F7ECE1;
+    border-radius: 20px;
+    padding: 5px;
+    width: 250px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.weather-desc {
+    text-transform: capitalize;
+}
+
+footer {
+    background-color: #F7ECE1;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-size: 24px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -5,15 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather API</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
+
+    <link rel="icon" href="imgs/weather-app.png">
 </head>
 <body>
     <div class="weather-container">
         <img class="icon">
-        <p class="weather-desc"></p>
-        <p class="temp"></p>
+        <div class="weather-info">
+            <p class="city-country"></p>
+            <p class="weather-desc"></p>
+            <p class="temp-fah">Fahrenheit: </p>
+            <p class="temp-celsius">Celsius: </p>
+        </div>
+        
     </div>
+
+    <footer>
+        <a href="https://www.flaticon.com/free-icons/weather" title="weather icons">Weather icons created by Freepik - Flaticon</a>
+    </footer>
 </body>
 </html>
