@@ -56,4 +56,75 @@ $.getJSON(
         document.getElementsByClassName('container')[0].style.backgroundColor = weatherConditions[condition].color;
     }
 
+    var input = document.getElementsByTagName('input')[0];
+    var search_img = document.getElementById('search-img');
+    console.log(search_img);
+
+    function searchCity() {
+        var city_input= input.value;
+        $.getJSON(
+            "http://api.openweathermap.org/geo/1.0/direct?q=" + city_input + "&limit=5&appid=84f67e3a5fbf9d84f482b69614e77cb8", 
+            function(data2) {
+                console.log(data2);
+
+                var country = data2[0].country;
+                var city = data2[0].name;
+                $('.city-country').text(city + ' / ' + country);
+
+                lat = data2[0].lat;
+                lon = data2[0].lon;
+                console.log(lat + " " + lon);
+
+                $.getJSON(
+                    "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=c8b893fffcae5507df084e5a9ff684d0",
+                    function(data3) {
+                        var temp = Math.floor(data3.main.temp);
+                        var temp_celsius = Math.floor(temp - 273.15);
+                        var temp_fah = Math.floor((temp - 273.15) * 9/5 + 32);
+
+                        $('.temp-fah').text(temp_fah + 'º');
+                        $('.temp-celsius').text(temp_celsius + 'º');
+
+                        var weather_desc = data3.weather[0].description;
+                        $('.weather-desc').text(weather_desc);
+
+                        var feels_like = data3.main.feels_like;
+                        var feels_like_fah = Math.floor((feels_like - 273.15) * 9/5 + 32);
+                        var feels_like_c = Math.floor(feels_like - 273.15);
+                        $('.feels-like').text(feels_like_fah + 'º / ' + feels_like_c + 'º');
+
+                        var humidity = data3.main.humidity;
+                        $('.humidity').text(humidity);
+
+                        var temp_max = data3.main.temp_max;
+                        var temp_max_fah = Math.floor((temp_max - 273.15) * 9/5 + 32);
+                        var temp_max_celsius = Math.floor(temp_max - 273.15);
+                        $('.temp-max').text(temp_max_fah + 'º / ' + temp_max_celsius + 'º');
+
+                        var temp_min = data3.main.temp_min;
+                        var temp_min_fah = Math.floor((temp_min - 273.15) * 9/5 + 32);
+                        var temp_min_celsius = Math.floor(temp_min - 273.15);
+                        $('.temp-min').text(temp_min_fah + 'º / ' + temp_min_celsius + 'º');
+
+                        var condition = data3.weather[0].main;
+                        if (weatherConditions[condition]) {
+                            $('.icon').attr('src', weatherConditions[condition].icon);
+                            document.getElementsByClassName('container')[0].style.backgroundColor = weatherConditions[condition].color;
+                        }
+                    }
+                )
+            }
+        )
+    }
+
+    input.addEventListener('keydown', (event) => {
+        if (event.key == "Enter") {
+            searchCity();
+        }  
+    });    
+
+    search_img.addEventListener('click', (event) => {
+        searchCity();
+    })
+
 });
