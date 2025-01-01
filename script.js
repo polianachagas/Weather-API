@@ -1,7 +1,6 @@
 $.getJSON(
     "https://api.openweathermap.org/data/2.5/weather?lat=35.7258&lon=139.539&appid=c8b893fffcae5507df084e5a9ff684d0", 
     function(data) {
-    console.log(data);
 
     var temp = Math.floor(data.main.temp);
     var temp_celsius = Math.floor(temp - 273.15);
@@ -58,14 +57,12 @@ $.getJSON(
 
     var input = document.getElementsByTagName('input')[0];
     var search_img = document.getElementById('search-img');
-    console.log(search_img);
 
     function searchCity() {
         var city_input= input.value;
         $.getJSON(
-            "http://api.openweathermap.org/geo/1.0/direct?q=" + city_input + "&limit=5&appid=84f67e3a5fbf9d84f482b69614e77cb8", 
+            "https://api.openweathermap.org/geo/1.0/direct?q=" + city_input + "&limit=5&appid=84f67e3a5fbf9d84f482b69614e77cb8", 
             function(data2) {
-                console.log(data2);
 
                 var country = data2[0].country;
                 var city = data2[0].name;
@@ -73,7 +70,6 @@ $.getJSON(
 
                 lat = data2[0].lat;
                 lon = data2[0].lon;
-                console.log(lat + " " + lon);
 
                 $.getJSON(
                     "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=c8b893fffcae5507df084e5a9ff684d0",
