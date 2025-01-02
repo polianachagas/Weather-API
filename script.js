@@ -1,5 +1,5 @@
 $.getJSON(
-    "https://api.openweathermap.org/data/2.5/weather?lat=35.7258&lon=139.539&appid=c8b893fffcae5507df084e5a9ff684d0", 
+    "https://api.openweathermap.org/data/2.5/weather?lat=-23.54898&lon=-46.6388&appid=c8b893fffcae5507df084e5a9ff684d0", 
     function(data) {
 
     var temp = Math.floor(data.main.temp);
